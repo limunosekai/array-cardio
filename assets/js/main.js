@@ -71,3 +71,54 @@ const transportation = data.reduce((obj, item) => {
   return obj;
 }, {});
 console.log(transportation);
+
+
+/* 8.some and every checks */
+
+const people2 = [
+  {name : 'Wes', year : 1988},
+  {name : 'Kait', year : 1986},
+  {name : 'Irv', year : 1970},
+  {name : 'Lux', year : 2015}
+];
+
+const comments = [
+  {text : 'Love this', id : 523423},
+  {text : 'Super good', id : 823423},
+  {text : 'You are the best', id : 2039842},
+  {text : 'Ramen in my fay good ever', id : 123523},
+  {text : 'Nice Nice Nice', id : 542328}
+];
+
+const isAdult = people2.some(person =>
+  ((new Date()).getFullYear()) - person.year >= 19);
+
+console.log({isAdult});
+
+const isAdultEvery = people2.every(person =>
+  ((new Date()).getFullYear()) - person.year >= 19);
+
+console.log(isAdultEvery);
+
+/* 9. find */
+//filter : true인 값들로 새로운 배열을 만듦.
+//find : true인 값 1개만 찾고 함수 종료.
+
+const result = comments.find(comment => comment.id === 823423);
+console.log(result);
+
+/* 10. findIndex */
+
+const index = comments.findIndex(comment => comment.id === 823423);
+
+console.log(index);
+
+// splice = array를 수정
+// comments.splice(index, 1);
+// console.table(comments);
+
+const newComments = [
+  ...comments.slice(0, index), // 0번째 부터 index 전까지
+  ...comments.slice(index + 1) // index + 1 부터 지정하지 않을 경우 끝까지
+];
+console.table(newComments);
